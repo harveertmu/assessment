@@ -19,7 +19,7 @@ use App\Http\Controllers\PaymentProviderRequestController;
 Route::post('/events', [EventController::class, 'store']);
 
 
-// Route::post('/payment-methods', [PaymentMethodController::class, 'store']);
+Route::post('/payment-methods', [PaymentMethodController::class, 'store']);
 // Route::post('/companies', [CompanyController::class, 'store']);
 // Route::get('/payment-provider-requests', [PaymentProviderRequestController::class, 'index']);
 

@@ -24,7 +24,7 @@
                                     Locaion
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Description
+                                    Action
                                 </th>
                             </tr>
                         </thead>
@@ -42,7 +42,7 @@
                                     {{ $event->location }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $event->description }}
+                                <a class="btn btn-primary" href="{{ route('event.edit',$event->id) }}">Manage Event</a>
                                 </td>
                             </tr>
                             @empty

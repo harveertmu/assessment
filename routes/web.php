@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['middleware' => ['auth', 'finance']], function () {
+    Route::resource('event', FinanceController::class);
     Route::get('/finance-dashboard', [FinanceController::class, 'index'])->name('finance-dashboard');
 });
 require __DIR__.'/auth.php';
