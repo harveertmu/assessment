@@ -32,5 +32,9 @@ Route::middleware('auth')->group(function () {
 Route::group(['middleware' => ['auth', 'finance']], function () {
     Route::resource('event', FinanceController::class);
     Route::get('/finance-dashboard', [FinanceController::class, 'index'])->name('finance-dashboard');
+    Route::get('/events/create', [FinanceController::class, 'create'])->name('events.create');
+    Route::post('/events', [FinanceController::class, 'store'])->name('events.store');
+
+
 });
 require __DIR__.'/auth.php';

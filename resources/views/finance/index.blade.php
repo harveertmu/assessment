@@ -3,6 +3,9 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             Events
         </h2>
+        <a href="{{ route('events.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">
+            Add Event
+        </a>
     </x-slot>
 
     <div class="py-12">
