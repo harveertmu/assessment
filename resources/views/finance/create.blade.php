@@ -17,11 +17,11 @@
 
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-medium text-gray-700">Event Name</label>
-                        <input type="text" name="name" id="name" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500" placeholder="Enter event name">
+                        <input type="text" name="name" id="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500" placeholder="Enter event name">
                     </div>
                     <div class="mb-4">
                         <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
-                        <select name="location" id="location" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500">
+                        <select name="location" id="location" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500">
                             <option value="">Select a location</option>
                             <option value="Malta">Malta</option>
                             <option value="Brazil">Brazil</option>
@@ -34,7 +34,7 @@
 
                     <div class="mb-4">
                         <label for="date" class="block text-sm font-medium text-gray-700">Event Date</label>
-                        <input type="date" name="date" id="date" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500">
+                        <input type="date" name="date" id="date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500">
                     </div>
 
                     <div class="mb-4">
