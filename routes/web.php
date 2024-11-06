@@ -23,7 +23,17 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // return view('dashboard');
+    $user = auth()->user();
+    if ($user->hasRole('Admin')) {
+        // If user is an admin, return the admin dashboard view
+        return view('dashboard');
+    }
+    if ( $user->hasRole('Finance')) {
+        // If user is an admin, return the admin dashboard view
+        return redirect()->route('finance.index');  
+     
+    }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -40,10 +50,10 @@ Route::group(['middleware' => ['auth', 'finance']], function () {
     Route::get('/finance/event-payment/{id}/edit', [EventPaymentController::class, 'edit'])->name('event-payment.edit');
     Route::put('/finance/event-payment/{id}', [EventPaymentController::class, 'update'])->name('event-payment.update');
 
-    
-    Route::get('event', [FinanceController::class,'create'])->name('events.create');
 
-    Route::post('event', [FinanceController::class,'store'])->name('events.store');
+    Route::get('event', [FinanceController::class, 'create'])->name('events.create');
+
+    Route::post('event', [FinanceController::class, 'store'])->name('events.store');
     Route::get('/finance', action: [FinanceController::class, 'index'])->name('finance.index');
     Route::get('/finance/edit/{event}', [FinanceController::class, 'editPayment'])->name('finance.edit_payment');
     Route::put('/finance/update/{event}', [FinanceController::class, 'updatePayment'])->name('finance.updatePayment');
@@ -54,7 +64,5 @@ Route::group(['middleware' => ['auth', 'finance']], function () {
 
     Route::get('/finance/payment-provider-edit/{event}', [PaymentProviderRequestController::class, 'show'])->name('finance.edit_payment_provider');
     Route::put('/finance/payment-provider-update/{event}', [PaymentProviderRequestController::class, 'updateStatus'])->name('payment-provider-request.updateStatus');
-  
-
 });
 require __DIR__ . '/auth.php';

@@ -106,7 +106,7 @@ class FinanceController extends Controller
         Event::create($validatedData);
 
         // Redirect or return a response
-        return redirect()->route('finance')->with('success', 'Event created successfully!');
+        return redirect()->route('finance.index')->with('success', 'Event created successfully!');
     }
 
 

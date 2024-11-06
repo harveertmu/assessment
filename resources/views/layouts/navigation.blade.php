@@ -14,16 +14,18 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    @if(auth()->user()->hasRole('Admin'))
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @endif
 
 
                     <x-nav-link :href="route('finance.index')" :active="request()->routeIs('finance.index')">
                         finance dashboard
                     </x-nav-link>
                     <x-nav-link :href="route('event-payment.create')" :active="request()->routeIs('event-payment.create')">
-                    Create Event Payment
+                        Create Event Payment
 
                     </x-nav-link>
 

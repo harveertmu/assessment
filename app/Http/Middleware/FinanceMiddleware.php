@@ -15,10 +15,13 @@ class FinanceMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->user() || !auth()->user()->hasRole('Finance')) {
+        if (auth()->user() || auth()->user()->hasRole('Finance') || auth()->user()->hasRole('Admin')) {
+            return $next($request);
+
+        }else{
             return redirect('/'); // Redirect if not authorized
+
         }
 
-        return $next($request);
     }
 }
