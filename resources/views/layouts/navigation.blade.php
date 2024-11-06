@@ -8,7 +8,8 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
-                    
+
+
                 </div>
 
                 <!-- Navigation Links -->
@@ -17,10 +18,15 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('finance-dashboard')" :active="request()->routeIs('finance-dashboard')">
-                    finance dashboard
+
+                    <x-nav-link :href="route('finance.index')" :active="request()->routeIs('finance.index')">
+                        finance dashboard
                     </x-nav-link>
-                    
+                    <x-nav-link :href="route('event-payment.create')" :active="request()->routeIs('event-payment.create')">
+                    Create Event Payment
+
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -49,7 +55,7 @@
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                                onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -95,7 +101,7 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

@@ -23,7 +23,7 @@
                     </ul>
                 </div>
                 @endif
-                <form action="{{ route('event.update', $event->id) }}" method="POST" class="bg-white p-6 rounded shadow-md">
+                <form action="{{ route('finance.updatePayment', $event->id) }}" method="POST" class="bg-white p-6 rounded shadow-md">
                     @csrf <!-- CSRF protection -->
                     @method('PUT') <!-- Specify the HTTP method -->
 
@@ -61,7 +61,7 @@
 
                     <div class="mb-4">
                         <label for="payment_method" class="block text-sm font-medium text-gray-700">Payment Method</label>
-                        <select name="payment_method_id" id="payment_method" required>
+                        <select name="payment_method_id" id="payment_method " class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500" required>
                             @foreach ($paymentMethods as $method)
                             <option value="{{ $method->id }}">{{ $method->name }}</option>
                             @endforeach
@@ -69,7 +69,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
-                        <select name="company_id" id="payment_method" required>
+                        <select name="company_id" id="payment_method" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500" required>
                             @foreach ($companies as $company)
                             <option value="{{ $company->id }}">{{ $company->name }}</option>
                             @endforeach

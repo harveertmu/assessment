@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\EventPaymentController;
+use App\Http\Controllers\PaymentProviderRequestController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +33,28 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['middleware' => ['auth', 'finance']], function () {
-    Route::resource('event', FinanceController::class);
-    Route::get('/finance-dashboard', [FinanceController::class, 'index'])->name('finance-dashboard');
-    Route::get('/events/create', [FinanceController::class, 'create'])->name('events.create');
-    Route::post('/events', [FinanceController::class, 'store'])->name('events.store');
+    Route::get('/finance/payment-provider', action: [EventPaymentController::class, 'index'])->name('finance.payment_provider');
 
+    Route::get('/finance/event-payment/create', [EventPaymentController::class, 'create'])->name('event-payment.create');
+    Route::post('/finance/event-payment', [EventPaymentController::class, 'store'])->name('event-payment.store');
+    Route::get('/finance/event-payment/{id}/edit', [EventPaymentController::class, 'edit'])->name('event-payment.edit');
+    Route::put('/finance/event-payment/{id}', [EventPaymentController::class, 'update'])->name('event-payment.update');
+
+    
+    Route::get('event', [FinanceController::class,'create'])->name('events.create');
+
+    Route::post('event', [FinanceController::class,'store'])->name('events.store');
+    Route::get('/finance', action: [FinanceController::class, 'index'])->name('finance.index');
+    Route::get('/finance/edit/{event}', [FinanceController::class, 'editPayment'])->name('finance.edit_payment');
+    Route::put('/finance/update/{event}', [FinanceController::class, 'updatePayment'])->name('finance.updatePayment');
+    Route::get('/finance/request-payment-provider', [FinanceController::class, 'requestPaymentProvider'])->name('request-payment-provider');
+    Route::post('/finance/store-payment-provider-request', [FinanceController::class, 'storePaymentProviderRequest'])->name('store-payment-provider-request');
+
+
+
+    Route::get('/finance/payment-provider-edit/{event}', [PaymentProviderRequestController::class, 'show'])->name('finance.edit_payment_provider');
+    Route::put('/finance/payment-provider-update/{event}', [PaymentProviderRequestController::class, 'updateStatus'])->name('payment-provider-request.updateStatus');
+  
 
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

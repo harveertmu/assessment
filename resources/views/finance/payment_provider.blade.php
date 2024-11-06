@@ -1,13 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Events
+            Payment Provider
         </h2>
-        <a href="{{ route('events.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-500  font-semibold rounded-md hover:bg-blue-600">
-            Add Event
-        </a>
-        <a href="{{ route('finance.payment_provider') }}" class="inline-flex items-center px-4 py-2 bg-blue-500  font-semibold rounded-md hover:bg-blue-600">
-             Payment Provider
+        <a href="{{ route('request-payment-provider') }}" class="inline-flex items-center px-4 py-2 bg-blue-500  font-semibold rounded-md hover:bg-blue-600">
+            New Payment Provider
         </a>
     </x-slot>
 
@@ -34,14 +31,19 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Event name
+                                    Payment method name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Date
+                                    Website
+                                </th>
+                             
+                                <th scope="col" class="px-6 py-3">
+                                    Event
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Locaion
+                                    Status
                                 </th>
+                               
                                 <th scope="col" class="px-6 py-3">
                                     Action
                                 </th>
@@ -52,16 +54,19 @@
 
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $event->name }}
+                                    {{ $event->payment_method_name }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $event->date }}
+                                    {{ $event->website }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $event->location }}
+                                {{ $event->event['name'] }}
+                                </td>
+                                <td class="px-6 py-4">
+                                {{ $event->status }}
                                 </td>
 
-                                <td><a href="{{ route('finance.edit_payment', $event->id) }}" class="text-danger"> Manage Payment </a></td>
+                                <td><a href="{{ route('finance.edit_payment_provider', $event->id) }}" class="text-danger"> Manage status </a></td>
                             </tr>
                             @empty
                             <p>No events found.</p>
