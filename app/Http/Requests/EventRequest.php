@@ -22,10 +22,15 @@ class EventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'location' => 'required|in:Malta,Brazil,Africa,Asia,East Europe,Eurasia',
-            'date' => 'required|date',
-            'description' => 'required|string',
+            // 'name' => 'required|string|max:255',
+            // 'location' => 'required|in:Malta,Brazil,Africa,Asia,East Europe,Eurasia',
+            // 'date' => 'required|date',
+            // 'description' => 'required|string',
+            'name.required' => 'The event name is required.',
+            'date.required' => 'The event date is required.',
+            'date.after' => 'The event date must be a future date.',
+            'location.required' => 'The event location is required.',
+            'description.max' => 'The event description may not be greater than 500 characters.',
         ];
     }
 }
